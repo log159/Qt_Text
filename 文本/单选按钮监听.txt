@@ -1,0 +1,25 @@
+    this->select=2;
+    connect(ui->radioButton,&QRadioButton::clicked,[=](){
+        this->select=1;
+        qDebug()<<"男";
+    });
+
+    connect(ui->radioButton_2,&QRadioButton::clicked,[=](){
+        this->select=0;
+        qDebug()<<"女";
+    });
+
+    connect(ui->pushButton,&QPushButton::clicked,[=](){
+       if(this->select==1)
+       {
+           qDebug()<<"选中的是男";
+       }
+       else if(this->select==0)
+       {
+           qDebug()<<"选中的是女";
+       }
+       else
+       {
+           qDebug()<<"请选一个";
+       }
+    });

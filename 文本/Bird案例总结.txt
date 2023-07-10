@@ -1,0 +1,19 @@
+    quitMenu=new QMenu();//非菜单栏菜单
+    connect(quitMenu->addAction("退出"),&QAction::triggered,[=](){
+       exit(0);
+    });
+    e->button()==Qt::RightButton//鼠标右键
+    if(e->button()==Qt::RightButton)
+    {
+        this->quitMenu->popup(QCursor::pos());//鼠标位置弹出菜单
+    }
+
+    QDesktopWidget*desk=QApplication::desktop();//桌面信息
+    this->setWindowFlags(Qt::FramelessWindowHint);//窗口隐藏
+    this->setAttribute(Qt::WA_TranslucentBackground);//背景隐藏
+    this->setWindowFlags(this->windowFlags()|Qt::WindowStaysOnTopHint);//窗口最前
+    this->move(-this->width(),desk->height()*0.5);//默认初始位置
+
+    painter.setRenderHint(QPainter::Antialiasing);//去边缘锯齿
+
+m_Point=e->globalPos()-((QWidget*)(this->parent()))->frameGeometry().topLeft();//鼠标的绝对位置和他所在窗口的父类的绝对位置

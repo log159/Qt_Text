@@ -1,0 +1,33 @@
+    this->my=this;
+    this->setFixedSize(400,400);
+    QPushButton * btn=new QPushButton("win01",this);
+    btn->move(30,30);
+    btn->resize(80,80);
+    QPushButton * btn2=new QPushButton("win02",this);
+    btn2->move(200,200);
+    btn2->resize(80,80);
+
+//    this->te=new Teacher(this);
+//    this->st=new Student(this);
+//    void(Teacher::*teacherSignals)(QString)=&Teacher::hungry;
+//    void(Student::*studentSlots)(QString)=&Student::givefood;
+//    void(Teacher::*teacherSignals)()=&Teacher::hungry;
+//    void(Student::*studentSlots)()=&Student::givefood;
+//    connect(te,teacherSignals,st,studentSlots);
+//    connect(btn2,&QPushButton::clicked,te,teacherSignals);
+//    connect(btn,&QPushButton::clicked,btn2,&QPushButton::clicked);
+
+//    this->test();
+
+    connect(btn,&QPushButton::clicked,[=](){btn->close();
+
+        btn2->move(200,200);
+        btn2->resize(80,80);
+
+    });
+    connect(btn2,&QPushButton::clicked,[=](){
+        btn2->close();
+
+        btn->move(30,30);
+        btn->resize(80,80);
+    });

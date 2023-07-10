@@ -1,0 +1,149 @@
+    QPainter painter(&image0);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.fillRect(image0.rect(), Qt::transparent);
+    painter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+    image0.save("E:/123.png");
+
+
+        //设置窗口置顶（置顶一次）
+
+        ::SetWindowPos(HWND(changePassWidget->winId()), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+
+        ::SetWindowPos(HWND(changePassWidget->winId()), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+
+    //初始位置屏幕居中
+    QRect deskRect = QApplication::desktop()->availableGeometry();
+    this->move(deskRect.width()*0.5-this->width()*0.5,deskRect.height()*0.5-this->height()*0.5);
+
+//滚动窗口
+#include <QApplication>
+#include <QWidget>
+#include <QScrollArea>
+#include <QVBoxLayout>
+#include <QLabel>
+
+#include "mainwindow.h"
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+
+    QWidget smallWindow;
+    smallWindow.setFixedSize(1500, 950);
+    smallWindow.show();
+
+    MainWindow bigWindow;
+
+    QScrollArea scrollArea(&smallWindow);
+    scrollArea.setWidgetResizable(true);
+    scrollArea.setWidget(&bigWindow);
+
+    QVBoxLayout layout(&smallWindow);
+    layout.addWidget(&scrollArea);
+
+    for (int i = 0; i < 40; ++i) {
+        QLabel* label = new QLabel(QString("Label %1").arg(i + 1), &bigWindow);
+        label->setFixedSize(100, 100);
+        label->setStyleSheet("border: 2px solid red;");
+        label->move(10, 110 * i);
+    }
+
+    return a.exec();
+}
+
+//滑动条布局
+    mainwidget* bigWindow = new mainwidget;
+
+    QScrollArea* scrollArea = new QScrollArea(this);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setWidget(bigWindow);
+    scrollArea->setFixedSize(_width,_height);
+
+
+
+//网格布局
+    const int rows = 2;
+        const int columns = 2;
+
+        QTableWidget* tableWidget = new QTableWidget(rows, columns);
+
+//        tableWidget->setHorizontalHeaderLabels(QStringList() << "出售价" << "原价");
+//        tableWidget->setVerticalHeaderLabels(QStringList()<<"规格名称"<<"规格名称");
+        // 隐藏水平标题栏
+        tableWidget->horizontalHeader()->setVisible(false);
+        // 隐藏垂直标题栏
+        tableWidget->verticalHeader()->setVisible(false);
+
+
+        for (int row = 0; row < rows; ++row) {
+            for (int column = 0; column < columns; ++column) {
+                QLineEdit* lineEdit = new QLineEdit();
+                lineEdit->setAlignment(Qt::AlignCenter);
+
+                // 设置单元格的大小策略，以适应QLineEdit
+                QTableWidgetItem* item = new QTableWidgetItem();
+                item->setSizeHint(lineEdit->sizeHint());
+
+                // 将QLineEdit部件添加到单元格
+                QHBoxLayout* layout = new QHBoxLayout();
+                layout->addWidget(lineEdit);
+                layout->setContentsMargins(0, 0, 0, 0);
+
+                QWidget* widget = new QWidget();
+                widget->setLayout(layout);
+
+                tableWidget->setCellWidget(row, column, widget);
+                tableWidget->setItem(row, column, item);
+            }
+        }
+
+        QHBoxLayout* mainLayout = new QHBoxLayout();
+        mainLayout->addWidget(tableWidget);
+
+        setLayout(mainLayout);
+
+
+//按钮三态
+QPushButton{border-image: url(:/new/prefix1/image/showmodeimag/ok.png)}
+QPushButton:hover{border-image: url(:/new/prefix1/image/showmodeimag/ok.png)}
+QPushButton:pressed{border-image: url(:/new/prefix1/image/showmodeimag/ok1.png)}
+
+//网格线
+    int width=8,height=2;
+    int step_w=this->width()/8;
+    int step_h=this->height()/8;
+    //竖线
+    for(int i=0;i<=width;++i){painter.drawLine(i*step_w,0,i*step_w,height*step_h);}
+    //横线
+    for(int i=0;i<=height;++i){painter.drawLine(0,i*step_h,width*step_w,i*step_h);}
+
+
+//按钮透明
+    ui->But_3_4->setFlat(true);
+    ui->But_3_4->setStyleSheet("QPushButton{background-color:transparent;}");
+    ui->But_3_4->setCursor(Qt::PointingHandCursor);
+
+    // 添加列表项
+    for (int i = 0; i < 3; ++i) {
+        QListWidgetItem *item = new QListWidgetItem();
+        ui->ListWidget_2_1->addItem(item);
+
+        //一列 LineEdit 集合
+        QWidget * widget=new QWidget();
+        widget->setFixedSize(ui->ListWidget_2_1->width(),50);
+        int num=6;
+
+        for(int j=0;j<num;++j)
+        {
+            QLineEdit *lineEdit = new QLineEdit(widget);
+            lineEdit->move(j*int(widget->width()/num),0);
+        }
+        ui->ListWidget_2_1->setItemWidget(item,widget);
+
+    }
+
+//监听Combox的变动
+    QObject::connect(ui->ComboBox_1_1, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
+                     [=](const QString& text) {
+        ui->Lab_1_4->setText(text);
+    });

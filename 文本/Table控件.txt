@@ -1,0 +1,55 @@
+    ui->setupUi(this);
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setRowCount(4);
+    QStringList heardList;
+    heardList<<"姓名"<<"性别"<<"年龄";
+    ui->tableWidget->setHorizontalHeaderLabels(heardList);
+    QStringList nameList;
+    nameList<<"张三"<<"李四"<<"王五"<<"赵六";
+    QList<QString>sexList;
+    sexList<<"男"<<"女"<<"男"<<"男";
+    for(int i=0;i<4;i++)
+    {
+        int j=0;
+
+        ui->tableWidget->setItem(i,j++,new QTableWidgetItem(nameList[i]));
+
+        ui->tableWidget->setItem(i,j++,new QTableWidgetItem(sexList.at(i)));
+
+        ui->tableWidget->setItem(i,j++,new QTableWidgetItem(QString::number(i*10)));
+
+    }
+    connect(ui->addPerson,&QPushButton::clicked,[=](){
+        bool isFind=ui->tableWidget->findItems("张三",Qt::MatchExactly).isEmpty();
+        if(!isFind)
+        {
+            QMessageBox::warning(this,"警告","已经有了!");
+
+        }
+        else
+        {
+            QStringList templist;
+            templist<<"张三"<<"男"<<"10";
+            ui->tableWidget->insertRow(0);
+            for(int i=0;i<3;i++)
+            {
+                 ui->tableWidget->setItem(0,i,new QTableWidgetItem(templist.at(i)));
+            }
+
+        }
+    });
+    connect(ui->deletePerson,&QPushButton::clicked,[=](){
+        bool isFind=ui->tableWidget->findItems("张三",Qt::MatchExactly).isEmpty();
+        if(!isFind)
+        {
+            //QMessageBox::warning(this,"警告","将删除此项!");
+            int num=ui->tableWidget->findItems("张三",Qt::MatchExactly).first()->row();
+            ui->tableWidget->removeRow(num);
+
+        }
+        else
+        {
+            QMessageBox::warning(this,"警告","没有此项!");
+        }
+
+    });

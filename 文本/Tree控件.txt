@@ -1,0 +1,9 @@
+    ui->treeWidget->setHeaderLabels(QStringList()<<"姓名"<<"年龄");
+    QTreeWidgetItem * person01= new QTreeWidgetItem(QStringList()<<"张三"<<"14");
+    ui->treeWidget->addTopLevelItem(person01);
+    QTreeWidgetItem * person02=new QTreeWidgetItem(QStringList()<<"李四"<<"20");
+    ui->treeWidget->addTopLevelItem(person02);
+    QTreeWidgetItem * person03=new QTreeWidgetItem(QStringList()<<"王五"<<"25");
+    ui->treeWidget->addTopLevelItem(person03);
+    person01->addChild(new QTreeWidgetItem(QStringList()<<"乐于助人"));
+    person02->addChild(new QTreeWidgetItem(QStringList()<<"吃苦耐劳"));

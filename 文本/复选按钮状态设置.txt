@@ -1,0 +1,2 @@
+
+    ui->checkBox->setTristate(true);

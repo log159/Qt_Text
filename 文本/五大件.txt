@@ -1,0 +1,42 @@
+    this->resize(800,800);
+
+    //菜单栏
+    QMenuBar*bar=this->menuBar();
+    this->setMenuBar(bar);
+    QMenu*newmenu=bar->addMenu("文件");
+    QMenu*openmenu=bar->addMenu("设置");
+    QAction*menu1=newmenu->addAction("新建");
+    newmenu->addSeparator();
+    QAction*menu2=newmenu->addAction("打开");
+    QMenu*sonmenu1=new QMenu;
+    QAction*sonmenu1Act1=sonmenu1->addAction("功能1");
+    QAction*sonmenu1Act2=sonmenu1->addAction("功能2");
+    menu1->setMenu(sonmenu1);
+
+    //状态栏
+    QStatusBar*sbar=this->statusBar();
+    this->setStatusBar(sbar);
+    QLabel*lab1=new QLabel("左侧信息",this);
+    QLabel*lab2=new QLabel("右侧信息",this);
+    QLabel*lab3=new QLabel("中侧信息",this);
+    sbar->addWidget(lab1);
+    sbar->addPermanentWidget(lab2);
+    sbar->insertWidget(1,lab3);
+
+    //工具栏
+    QToolBar*toolbar1=new QToolBar(this);
+    addToolBar(Qt::LeftToolBarArea,toolbar1);
+    toolbar1->setAllowedAreas(Qt::LeftToolBarArea|Qt::RightToolBarArea);
+    toolbar1->setFloatable(false);
+    toolbar1->setMovable(false);
+    toolbar1->addAction(menu1);
+    toolbar1->addSeparator();
+    toolbar1->addAction(menu2);
+
+    //铆接部件
+    QDockWidget*dock=new QDockWidget("浮动窗口",this);
+    addDockWidget(Qt::BottomDockWidgetArea,dock);
+
+    //核心部件
+    QTextEdit*edit=new QTextEdit(this);
+    setCentralWidget(edit);

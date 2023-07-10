@@ -1,0 +1,191 @@
+菜单栏 一个
+工具栏 多个
+状态栏 一个
+铆接部件 多个
+核心部件 一个
+4大提醒窗口 错误 信息 警告 询问
+3大对话框 颜色 字体 文件
+
+QMenuBar QMenu QAction 菜单栏
+setMenuBar
+addMenu
+addAction
+addSeparator
+
+QToolBar 工具栏
+setAllowedAreas
+setFloatable
+setMovable
+addAction
+addSeparator
+
+QStatusBar QLabel 状态栏
+setStatusBar
+addWidget
+addPermanentWidget
+
+QDockWidget 铆接部件\浮动窗口
+addDockWidget
+insertWidget
+setAllowedAreas
+
+QTextEdit 核心部件
+setCentralWidget
+
+QWidget 小物件
+QPushButton 按钮
+setParent 嵌入父类窗口
+resize 改变(大小)
+setFixedSize 固定尺寸
+move 移动
+width 窗口宽度
+height 窗口高度
+connect 链接
+clicked 点击
+public slots: 槽
+signals: 信号
+emit 触发信号
+QString型.toUtf8().data()为char*型
+setText 设置文本
+SIGNAL SLOTS 旧版信号槽写法
+Lambda (表达式)
+CONFIG+＝c++11 旧版添加新版扩展
+mutable 修改值传递的拷贝
+QMenuBar 菜单栏
+setMenuBar 添加菜单栏到窗口
+QMenu 菜单
+addMenu 添加菜单项
+QAction 菜单项的子项
+addSeparator 添加分割线
+setMenu 添加子菜单
+setAllowedAreas 设置只允许停靠
+QToolBar 添加工具栏
+setFloatable 设置悬浮状态
+setMovable 设置移动
+QStatusBar 状态栏
+QLabel 标签
+addWidget 标签左侧
+addPermanentWidget  标签右侧
+insertWidget 改动标签位置
+QDockWidget 铆接部件
+QTextEdit 核心\中心部件
+setIcon 设置图标
+setupUi 设置ui文件
+triggered 触发
+QDialog 模态对话框
+exec 阻塞
+show 非模态对话框
+setAttribute 属性设置
+QMessageBox 消息对话框
+critical 错误提示
+information 信息提示
+question 询问提示
+warning 警告
+QColor 颜色对话框
+QColorDialog 作用域
+getColor 生成颜色对话框
+QFontDialog 作用域
+getFont 生成文字对话框
+family 字体
+pointSize 字号
+bold 加粗
+italic 加斜
+QFileDialog 作用域
+getOpenFileName 打开文件路径
+(*.txt) 格式过滤 第四个参数
+stateChanged 状态改变
+setTristate 第三种状态
+QListWidgetItem List控件
+addItem 添加控件
+setTextAlignment 控件位置
+addItems 添加控件容器
+QTreeWidget Tree控件
+setHeaderLabels 添加控件
+addTopLevelItem 添加顶层级别Item
+QTableWidget Table控件
+setHorizontalHeaderLabels 设置头标签
+setColumnCount 设置列数
+setRowCount 设置行数
+number int型转换为QString型
+setItem 安置表格数据
+QTableWidgetItem 表格元素
+setCurrentIndex 设置当前索引
+setCurrentText 设置当前文本
+setPixmap 设置像素图
+QPixmap 像素图
+load 加入像素图路径
+QMovie 动图
+frameChanged 图画信号返回值参数为当前图编号
+frameCount gif总帧数
+start 开始
+stop 停止
+QEvent 事件
+QMouseEvent 鼠标事件
+enterEvent 鼠标进入
+leaveEvent 鼠标离开
+mousePressEvent 鼠标按下
+mouseReleaseEvent 鼠标释放
+mouseMoveEvent 鼠标移动
+arg QString链式传参
+setMouseTracking 设置默认移动状态
+event 事件分发器
+eventFilter 事件过滤器
+QTimer 计时器类
+startTimer 事件开始
+timetId 事件编号
+timeout 时间到
+QTimerEvent 计时器事件类
+paintEvent 绘图事件
+QPainter 绘图类
+drawLine 画线
+drawEllipse 画椭圆
+drawRect 画矩形
+setFont 设置字体
+drawText 画字
+QPen 画笔
+setWidth 设置画笔宽度
+setStyle 设置画笔格式
+setPen 画家使用画笔
+QBrush 画刷
+setStyle 设置画刷格式
+setBrush 画家使用画刷
+QPoint 设置坐标
+setRenderHint 设置抗锯齿效果
+save 保存状态
+restore 恢复状态
+translate 移动画家
+update 手动调用绘图事件
+
+五大绘图设备
+QPixmap 可去边缘锯齿化
+QBitmap 黑白像素
+QImage 可进行像素化读写
+QPicture 可记录绘图事件
+QWidget 继承绘图类
+begin 开始记录
+end 结束记录
+isEmpty 记录为空还是不为空
+readAll 读取全部信息
+QByteArray 记录读取的信息 可隐式转换为QString
+utf-8 Qt默认支持格式
+QTextCode * codec = QTextCodec::codecForName("gbk");
+指定编码方式
+codec->toUnicode 转为指定编码格式
+readLine 读取单行数据
+close 关闭文件
+atEnd 读取到行末
+QIODevice 打开方式的作用域
+AppEnd 追加方式写
+suffix 返回文件后缀
+size 返回文件大小
+fileName 返回文件名
+filePath 返回文件路径
+DateTime 时间信息头文件包含
+created创建日期
+lastModified 最后修改日期
+toString 转为QString
+yyyy-MM-dd hh:mm:ss 日期格式
+Rect 矩形
+intersects 事件交叉
+setMedia 设置音乐循环播放
+play 播放一次

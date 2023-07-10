@@ -1,0 +1,17 @@
+   this->id1 = startTimer(100);
+    this->id2 = startTimer(1000);
+    QTimer * timer =new QTimer(this);
+    timer->start(10);
+    connect(timer,&QTimer::timeout,[=](){
+        ui->pushButton->setText(QString::number(this->num3++));
+    });
+    connect(ui->pushButton,&QPushButton::clicked,[=](){
+        if(this->next)
+        {
+            timer->stop();
+        }
+        else
+        {
+            timer->start(10);
+        }
+        next=(!next);

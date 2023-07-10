@@ -1,0 +1,5 @@
+    QStringList moonStr;
+    moonStr<<":/Battlers/moon_3.jpg"<<":/Battlers/moon_2.jpg";
+    QPixmap png01;
+    png01.load(moonStr.at(0));
+    ui->label->setPixmap(png01);

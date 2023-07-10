@@ -1,0 +1,70 @@
+    // 添加列表项
+    for (int i = 0; i < 5; ++i) {
+        QListWidgetItem *item = new QListWidgetItem();
+        ui->listWidget->addItem(item);
+
+        //一列 LineEdit 集合
+        MyPostItemWidget * widget=new MyPostItemWidget();
+        item->setSizeHint(QSize(widget->width(),widget->height()));
+        ui->listWidget->setItemWidget(item,widget);
+        widget->other->setParent(this);
+        connect(widget,&MyPostItemWidget::push_other,this,[=](QPoint point,bool isPass){
+            if(isPass)
+            {
+                point.setY(point.y()+20);
+                widget->other->move(point-this->mapToGlobal(QPoint(0,0)));
+                widget->other->show();
+            }
+            else {
+                widget->other->hide();
+            }
+        });
+
+    }
+
+border: none;
+color:blue;
+
+QPixmap pixmap(path);
+//pixmap=QPixmap::fromImage(imgShow);
+pixmap = pixmap.scaled(152, 76, Qt::KeepAspectRatio, Qt::SmoothTransformation);  // 按比例缩放
+ui->logo->setPixmap(pixmap);
+
+
+font-size: 14pt; /* 按钮字体大小 */
+color: #FFFFFF; /* 按钮字体颜色 */
+background-color: #388E3C; /* 按钮背景色 */
+border: 1px solid #388E3C; /* 按钮边框颜色 */
+border-radius: 10px; /* 圆角半径 */
+padding: 5px 10px; /* 按钮内边距 */
+background-color: #2E7D32; /* 鼠标悬停时按钮背景色
+
+    ui->But_3_4->setFlat(true);
+    ui->But_3_4->setStyleSheet("QPushButton{background-color:transparent;}");
+    ui->But_3_4->setCursor(Qt::PointingHandCursor);
+
+
+
+    m_StartGameBut=new QPushButton(this);
+    QPixmap start_game_pix;
+    start_game_pix.load(":/res/thing/SeedChooser_Button_Disabled.png");
+    m_StartGameBut->setStyleSheet("QPushButton{border-image: url(:/res/thing/SeedChooser_Button_Disabled.png)}"
+                                  "QPushButton:hover{border-image: url(:/res/thing/SeedChooser_Button_Disabled.png)}"
+                                  "QPushButton:pressed{border-image: url(:/res/thing/SeedChooser_Button.png)}");
+
+    m_StartGameBut->setFixedSize(start_game_pix.size());
+    m_StartGameBut->move(int(0.5*(plants_background_pix.width()-m_StartGameBut->width())),m_PlantsBackgroundCardLab->y()+450);
+    m_StartGameBut->setCursor(Qt::PointingHandCursor);
+    m_StartGameBut->show();
+
+
+文本居中绘图
+    QFont font("黑体", 10);
+    painter.setFont(font);
+    painter.setPen(Qt::black);
+
+    QString text = QString::number(PlantsCardConfig::PLANTS_COST.at(id));
+    int textWidth = painter.fontMetrics().width(text);
+    int textX = (card_img.width() - textWidth) / 2; // 计算文本的x坐标以使其在水平方向上居中
+
+    painter.drawText(textX, card_img.height()-3, text);

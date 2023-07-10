@@ -1,0 +1,40 @@
+   connect(ui->pushButton,&QPushButton::clicked,[=](){
+        QString str=QFileDialog::getOpenFileName(this,"打开文件","E:/","(*.txt)");
+        if(str.isEmpty())
+        {
+            //QMessageBox::warning(this,"警告","无路径");
+        }
+        else
+        {
+
+            //其他格式
+            //QTextCodec * cod=QTextCodec::codecForName("gbk");
+            //显示路径位置
+            ui->lineEdit->setText(str);
+            //打开文件
+            QFile file(str);
+            file.open(QIODevice::ReadOnly);
+            //读取文件01
+            QByteArray arr;
+            arr = file.readAll();
+            ui->textEdit->setText(arr);
+            //读取文件02
+//            QByteArray arr;
+//            arr=file.readLine();
+//            while(!file.atEnd())
+//            {
+//                arr+=file.readLine();
+//            }
+//            ui->textEdit->setText(arr);
+            //其他格式
+            //ui->textEdit->setText(cod->toUnicode(arr));
+            file.close();
+
+            file.open(QIODevice::Append);
+            file.write("aaaaaaa\n");
+            file.close();
+
+
+        }
+
+    });

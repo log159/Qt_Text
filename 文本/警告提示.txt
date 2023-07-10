@@ -1,0 +1,4 @@
+    //QMessageBox::critical(this,"criticalwindow","错误");
+    //QMessageBox::information(this,"infwindow","提示");
+    //QMessageBox::question(this,"questwindow","提示",QMessageBox::Save|QMessageBox::Cancel,QMessageBox::Cancel);
+    //QMessageBox::warning(this,"warnwindow","警告");

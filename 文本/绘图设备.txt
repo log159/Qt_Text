@@ -1,0 +1,67 @@
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+{
+    QString str;
+    str=":/Tallnut_body.png";//图片路径
+
+    //QPixmap
+//    QPixmap pixmap(300,300);//初始时设置大小
+//    pixmap.fill(Qt::blue);//设置背景颜色
+//    QPainter painter(&pixmap);
+//    painter.setPen(QPen(Qt::red));
+//    painter.drawEllipse(QPoint(150,150),100,100);
+//    pixmap.save("E:/pix.png");
+
+    //QBitmap
+//    QBitmap bitmap(300,300);
+//    bitmap.fill(Qt::black);
+//    QPainter painter(&bitmap);
+//    painter.setPen(QPen(Qt::white));
+//    painter.drawLine(30,30,150,150);
+//    bitmap.save("E:/pix2.png");
+
+    //QBitmap 处理图片为黑白不需要QPainter
+//    QBitmap bitmap;
+//    bitmap.load(str);
+//    bitmap.save("E:/pix2.png");
+
+    //QImage
+//    QImage image(300,300,QImage::Format_RGB32);
+//    image.fill(Qt::green);
+//    QPainter painter(&image);
+//    painter.setPen(QPen(Qt::white));
+//    painter.drawEllipse(QPoint(150,150),100,100);
+//    image.save("E:/pix3.png");
+
+    //QPicture 写事件成文件
+//    QPicture picture;
+//    QPainter painter(&picture);
+//    painter.begin(&picture);
+//    painter.setPen(QPen(Qt::red));
+//    painter.drawEllipse(QPoint(150,150),100,100);
+//    painter.end();
+//    picture.save("E:/pix4.rz");
+
+}
+void Widget::paintEvent(QPaintEvent *event)
+{
+    //QImage 支持像素级别访问修改
+//    QImage image;
+//    image.load(":/Tallnut_body.png");
+//    for(int i=20;i<50;i++)
+//    {
+//        for(int j=20;j<50;j++)
+//        {
+//            QRgb rgb=qRgb(255,0,0);
+//            image.setPixel(i+40,j,rgb);
+//        }
+//    }
+//    QPainter painter(this);
+//    painter.drawImage(0,0,image);
+
+    //QPicture 读取文件成事件
+    QPicture pic;
+    QPainter painter(this);
+    pic.load("E:/pix4.rz");
+    painter.drawPicture(0,0,pic);
+}

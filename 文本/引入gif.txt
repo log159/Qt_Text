@@ -1,0 +1,18 @@
+    QMovie * movie=new QMovie(":/trump.gif");
+    ui->label->setMovie(movie);
+
+
+    movie->start();
+    movie->setSpeed(200);
+
+
+    connect(movie,&QMovie::frameChanged,[=](int thePng){
+        if(thePng==movie->frameCount()-1)
+        {
+            movie->stop();
+        }
+    });
+
+    connect(ui->pushButton,&QPushButton::clicked,[=](){
+        movie->start();
+    });

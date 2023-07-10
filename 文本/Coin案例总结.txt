@@ -1,0 +1,42 @@
+//动画效果
+    //创建动画对象
+    QPropertyAnimation * animation=new QPropertyAnimation(this,"geometry");
+    //动画间隔
+    animation->setDuration(200);
+    //开始位置
+    animation->setStartValue(QRect(this->x(),this->y(),this->width(),this->height()));
+    //结束位置
+    animation->setEndValue(QRect(this->x(),this->y()+10,this->width(),this->height()));
+    //设置动画曲线
+    animation->setEasingCurve(QEasingCurve::OutBounce);
+    //执行后销毁
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+
+//按钮初始化
+    //设置按钮大小
+    this->setFixedSize(pixmap.width(),pixmap.height());
+    //设置不规则样式
+    this->setStyleSheet("QPushButton{border:0px;}");
+    //设置图标
+    this->setIcon(pixmap);
+    //设置图标大小
+    this->setIconSize(QSize(pixmap.width(),pixmap.height()));
+
+//标签初始化
+        QLabel * myLabel=new QLabel;
+        myLabel->setParent(this);
+        myLabel->setFixedSize(myLevelBut->width(),myLevelBut->height());
+        myLabel->move(25+(i%4)*70,128+(i/4)*70);
+        myLabel->setText(QString::number(i+1));
+        QFont font;
+        font.setFamily("方正少儿_GBK");
+        font.setPointSize(10);
+        myLabel->setFont(font);
+        myLabel->setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+        myLabel->setAttribute(Qt::WA_TransparentForMouseEvents);//鼠标穿透效果
+
+//音效音乐
+    QSound * startGameSound=new QSound(":/res/BackButtonSound.wav");
+    startGameSound->setParent(this);
+    startGameSound->setLoops(-1);//循环播放
+

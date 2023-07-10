@@ -1,0 +1,118 @@
+//图片翻转
+QImage Vertical(const QImage &origin)
+{
+    QImage newImage(QSize(origin.width(), origin.height()), QImage::Format_ARGB32);
+    QColor tmpColor;
+    int r, g, b;
+    for (int x = 0; x < newImage.width(); x++) {
+        for (int y = 0; y < newImage.height(); y++) {
+            tmpColor = QColor(origin.pixel(x, y));
+            r = tmpColor.red();
+            g = tmpColor.green();
+            b = tmpColor.blue();
+
+            newImage.setPixel(x, newImage.height() - y - 1, qRgb(r, g, b));
+
+        }
+    }
+    return newImage;
+}
+
+    quitMenu=new QMenu();//非菜单栏菜单
+    connect(quitMenu->addAction("退出"),&QAction::triggered,[=](){
+       exit(0);
+    });
+    e->button()==Qt::RightButton//鼠标右键
+    if(e->button()==Qt::RightButton)
+    {
+        this->quitMenu->popup(QCursor::pos());//鼠标位置弹出菜单
+    }
+
+    QDesktopWidget*desk=QApplication::desktop();//桌面信息
+    this->setWindowFlags(Qt::FramelessWindowHint);//菜单隐藏
+    this->setAttribute(Qt::WA_TranslucentBackground);//背景隐藏
+    this->setWindowFlags(this->windowFlags()|Qt::WindowStaysOnTopHint);//窗口最前
+    this->move(-this->width(),desk->height()*0.5);//默认初始位置
+
+    painter.setRenderHint(QPainter::Antialiasing);//去边缘锯齿
+
+m_Point=e->globalPos()-((QWidget*)(this->parent()))->frameGeometry().topLeft();//鼠标的绝对位置和他所在窗口的父类的绝对位置
+
+//动画效果
+    //创建动画对象
+    QPropertyAnimation * animation=new QPropertyAnimation(this,"geometry");
+    //动画间隔
+    animation->setDuration(200);
+    //开始位置
+    animation->setStartValue(QRect(this->x(),this->y(),this->width(),this->height()));
+    //结束位置
+    animation->setEndValue(QRect(this->x(),this->y()+10,this->width(),this->height()));
+    //设置动画曲线
+    animation->setEasingCurve(QEasingCurve::OutBounce);
+    //执行后销毁
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+
+//按钮初始化
+    //设置按钮大小
+    this->setFixedSize(pixmap.width(),pixmap.height());
+    //设置不规则样式
+    this->setStyleSheet("QPushButton{border:0px;}");
+    //设置图标
+    this->setIcon(pixmap);
+    //设置图标大小
+    this->setIconSize(QSize(pixmap.width(),pixmap.height()));
+
+//标签初始化
+        QLabel * myLabel=new QLabel;
+        myLabel->setParent(this);
+        myLabel->setFixedSize(myLevelBut->width(),myLevelBut->height());
+        myLabel->move(25+(i%4)*70,128+(i/4)*70);
+        myLabel->setText(QString::number(i+1));
+        QFont font;
+        font.setFamily("楷体");
+        font.setPointSize(10);
+        myLabel->setFont(font);
+        myLabel->setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+        myLabel->setAttribute(Qt::WA_TransparentForMouseEvents);//鼠标穿透效果
+        myLabel->setStyleSheet("border:2px solid red;");//设置边框
+
+//标签文字颜色
+         QPalette pe;
+         pe.setColor(QPalette::WindowText,Qt::green);
+         m_Label->setPalette(pe);
+
+  这里的 Qt::Alignment 类型有以下取值。
+        1）Qt::AlignLeft:：水平方向靠左。
+
+        2）Qt::AlignRight：水平方向靠右。
+
+        3）Qt::AlignHCenter：水平方向居中。
+
+        4）Qt::AlignJustify：水平方向调整间距两端对齐。
+
+        5）Qt::AlignTop：垂直方向靠上。
+
+        6）Qt::AlignButton：垂直方向靠下。
+
+        7）Qt::AlignVCenter：垂直方向居中。
+
+        8）Qt::AlignCenter：等价于 Qt::AlignHCenter | Qt::AlignVCenter。
+
+
+//音效音乐
+    QSound * startGameSound=new QSound(":/res/BackButtonSound.wav");
+    startGameSound->setParent(this);
+    startGameSound->setLoops(-1);//循环播放
+
+Q_UNUSED()函数在程序中的作用，就如它所代表的英文一样，unused，即无用的意思。即Q_UNUSED()函数在程序中没有实质性的作用，用来避免编译器警告。
+
+    this->setFlat(true);//按钮不显示
+    this->setStyleSheet("QPushButton{color:red; background-color:transparent;}");//按钮点击时不显示
+
+//去除左上角Icon
+    QImage image(QSize(10,10),QImage::Format_ARGB32);
+    image.fill(Qt::transparent);
+     QPixmap tempPixmap = QPixmap::fromImage(image);
+    this->setWindowIcon(QIcon(tempPixmap));
+
+    setFocusPolicy(Qt::NoFocus);//取消当前所有焦点 //实现 up down 等方向键响应

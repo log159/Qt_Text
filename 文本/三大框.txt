@@ -1,0 +1,6 @@
+        //QColor col=QColorDialog::getColor(Qt::white,this);
+        //bool temp1=0;
+        //QFont fon=QFontDialog::getFont(&temp1,QFont("黑体",36));
+        //qDebug()<<fon.family()<<fon.pointSize()<<fon.bold()<<fon.italic();
+        //QString str=QFileDialog::getOpenFileName(this,"FILE","C:/","(*.txt)");
+        //qDebug()<<str;

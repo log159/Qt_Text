@@ -1,0 +1,49 @@
+
+    connect(ui->pushButton,&QPushButton::clicked,[=](){
+        QString str=QFileDialog::getOpenFileName(this,"打开文件","E:/","(*.txt)");
+        if(str.isEmpty())
+        {
+            //QMessageBox::warning(this,"警告","无路径");
+        }
+        else
+        {
+
+            //其他格式
+            //QTextCodec * cod=QTextCodec::codecForName("gbk");
+            //显示路径位置
+            ui->lineEdit->setText(str);
+            //打开文件
+            QFile file(str);
+            file.open(QIODevice::ReadOnly);
+            //读取文件01
+            QByteArray arr;
+            arr = file.readAll();
+            ui->textEdit->setText(arr);
+            //读取文件02
+//            QByteArray arr;
+//            arr=file.readLine();
+//            while(!file.atEnd())
+//            {
+//                arr+=file.readLine();
+//            }
+//            ui->textEdit->setText(arr);
+            //其他格式
+            //ui->textEdit->setText(cod->toUnicode(arr));
+//            file.close();
+
+//            file.open(QIODevice::Append);
+//            file.write("aaaaaaa\n");
+//            file.close();
+
+            QFileInfo inf(str);
+            //文件后缀 文件大小 文件名 文件路径
+            qDebug()<<inf.suffix().toUtf8().data()<<inf.size()
+                   <<inf.fileName()<<inf.filePath();
+            //创建时间
+            qDebug()<<"创建时间"<<inf.created().toString("yyyy-MM-dd hh:mm:ss");
+            //最后修改时间
+            qDebug()<<"最后修改时间"<<inf.lastModified().toString("yyyy-MM-dd hh:mm:ss");
+
+        }
+
+    });
